@@ -5,7 +5,7 @@ A simple Spring Boot messaging examples projects using Kafka.
 ## Projects:
 
 * **kafka-consumer-app:** A consumer for example topic
-* **kafka-proucer-app:** A producer for example topic, produces one message per second
+* **kafka-proucer-app:** A producer application
 
 ## Docker compose to run Kafka
 This compose run a Kafka single broker cluster with one Zookeeper instance and Kafdrop application to monitor cluster.
@@ -25,13 +25,6 @@ To acess Kafdrop web interface just open link: http://localhost:9000
 docker-compose up -d
 ```
 
-### Create example topic
-
-```shell script
-docker-compose exec -T kafka0 \
-  kafka-topics --create --zookeeper zookeeper:2181 --topic example --replication-factor 1 --partitions 3
-```
-
 ### Execute Spring Boot applications
  
 #### KafkaConsumerApplication
@@ -40,6 +33,13 @@ docker-compose exec -T kafka0 \
 * See the messages on console output for each instance.
 
 #### KafkaProducerApplication
-* Execute **KafkaProducerApplication** on project kafka-producer-app to start sending messages
+* Execute **KafkaProducerApplication** on project kafka-producer-app to start sending messages using this endpoints:
 
+To produce 100 messages for simple-topic
+http://localhost:8080/api/producer/simple-topic?start=1&end=100
+
+To produce 100 messages for person-topic
+http://localhost:8080/api/producer/person-topic?start=1&end=100
+
+Use the start and end parameters as message IDs to track on producer and consumer.
 
