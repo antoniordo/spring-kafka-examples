@@ -37,6 +37,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       SERVER_SERVLET_CONTEXTPATH: /
       TZ: America/Maceio
+    command: sleep 2; /etc/confluent/docker/run
     links:
       - kafka0:kafka0
       - zookeeper:zookeeper

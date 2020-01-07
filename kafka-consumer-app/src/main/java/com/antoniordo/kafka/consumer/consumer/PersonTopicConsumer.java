@@ -20,13 +20,14 @@ public class PersonTopicConsumer {
     @KafkaListener(topics = "person-topic", containerFactory = "kafkaJsonListenerContainerFactory")
     public void receive(Person person) {
         
-        logger.info("Received Person: {}", person);
+        logger.info("Processing Person: {}", person);
+        SleepUtil.sleep();
     
         if (person.getName().toLowerCase().contains("error")) {
             throw new RuntimeException("Error processing Person!");
         }
-    
-        SleepUtil.sleep();
+        
+        logger.info("Processed Person: {}", person);
         
     }
     
