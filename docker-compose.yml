@@ -24,6 +24,11 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_NUM_PARTITIONS: 2
       TZ: America/Maceio
+    command: >
+      /bin/bash -c "
+        sleep 2;
+        /etc/confluent/docker/run;
+      "
     links:
       - zookeeper:zookeeper
     ports:
@@ -37,7 +42,6 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       SERVER_SERVLET_CONTEXTPATH: /
       TZ: America/Maceio
-    command: sleep 2; /etc/confluent/docker/run
     links:
       - kafka0:kafka0
       - zookeeper:zookeeper
