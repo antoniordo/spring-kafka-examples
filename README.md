@@ -1,4 +1,4 @@
-# sprring-kafka-examples
+# spring-kafka-examples
 
 A simple Spring Boot messaging examples projects using Kafka.
 
